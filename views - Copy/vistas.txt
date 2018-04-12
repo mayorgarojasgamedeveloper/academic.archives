@@ -1,0 +1,40 @@
+inicio
+Descubre
+Contacto
+Iniciar Sesion
+
+// Academico
+perfil
+ajustes
+agregar/
+  linea
+  produccion/
+    art-difucion
+    art-art-arbitrado
+    art-revista
+    capitulo-libro
+    informe-tecnico
+    libro
+    manuales
+    memorias
+    productividad
+    prototipo
+  proyecto
+  direccion
+  estadia
+modificar/
+  linea
+  produccion/
+    art-difucion
+    art-art-arbitrado
+    art-revista
+    capitulo-libro
+    informe-tecnico
+    libro
+    manuales
+    memorias
+    productividad
+    prototipo
+  proyecto
+  direccion
+  estadia

@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/usuarios">AA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <!-- INVITADOS -->
+      <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+      <li class="nav-item"><a class="nav-link" href="/descubre">Descubre</a></li>
+      <li class="nav-item"><a class="nav-link" href="/contacto">Contacto</a></li>
+
+      <!-- ACADEMICOS -->
+
+      <% if(usuario) { %>
+        <li class="nav-item"><a class="nav-link" href="/a/perfil"><%- usuario.usuario %></a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Agregar Reporte
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/a/agregar/linea">Línea innovadora</a>
+            <a class="dropdown-item" href="/a/agregar/produccion">Producción académica</a>
+            <a class="dropdown-item" href="/a/agregar/proyecto">Proyectos</a>
+            <a class="dropdown-item" href="/a/agregar/direccion">Dirección Individualizada</a>
+            <a class="dropdown-item" href="/a/agregar/estadia">Estadía en empresas</a>
+          </div>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="/a/carpeta">Carpeta</a></li>
+        <li class="nav-item"><a class="nav-link" href="/a/ajustes">Ajustes</a></li>
+        <% if(usuario.admin) { %>
+          <!-- ADMINISTRADOR -->
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Administrar Usuarios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/s/agregar">Nuevo Usuario</a>
+          <a class="dropdown-item" href="/s/eliminar">Eliminar Usuario</a>
+          </div>
+          </li>
+          <% } %>
+      <% } %>
+
+
+      <% if(!usuario) { %>
+        <li class="nav-item"><a class="nav-link" href="/iniciar">Iniciar Sesión</a></li>
+      <% } else { %>
+        <li class="nav-item"><a class="nav-link" href="#">Cerrar Sesión</a></li>
+      <% } %>
+
+    </ul>
+  </div>
+</nav>

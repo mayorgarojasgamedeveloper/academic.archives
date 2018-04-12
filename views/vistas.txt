@@ -1,0 +1,65 @@
+// INVITADO
+
+inicio*
+descubre*
+contacto*
+iniciar* // Iniciar Sesión
+
+// Academico
+perfil*
+ajustes* // modificar datos de perfil, cambiar imagen, cambiar contrasena, borrar cuenta
+carpeta* // Desde aqui se ven los reportes y se pueden borrar
+ver/
+  linea
+  produccion/
+    art-difucion
+    art-art-arbitrado
+    art-revista
+    capitulo-libro
+    informe-tecnico
+    libro
+    manuales
+    memorias
+    productividad
+    prototipo
+  proyectos
+  direccion
+  estadia
+agregar/
+  linea
+  produccion/
+    art-difucion
+    art-art-arbitrado
+    art-revista
+    capitulo-libro
+    informe-tecnico
+    libro
+    manuales
+    memorias
+    productividad
+    prototipo
+  proyectos
+  direccion
+  estadia
+modificar/ // Desde aqui se pueden borrar
+  linea
+  produccion/
+    art-difucion
+    art-art-arbitrado
+    art-revista
+    capitulo-libro
+    informe-tecnico
+    libro
+    manuales
+    memorias
+    productividad
+    prototipo
+  proyectos
+  direccion
+  estadia
+
+// superusuario
+logs
+usuarios/
+  Agregar
+  borrar

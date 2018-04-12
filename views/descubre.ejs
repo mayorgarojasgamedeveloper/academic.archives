@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="./stylesheets/style.css">
+  <title>Descubre</title>
+</head>
+<body>
+
+  <% include partials/nav %>
+
+  <section class="container jumbotron">
+    <form>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Autor">
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row">
+        <div class="col">
+          <select class="form-control" name="type">
+              <option value="0">Tipo de sección:</option>
+              <option value="li">Línea innovadora de investigación aplicada al desarrollo tecnológico</option>
+              <option value="pa">Producción académica</option>
+              <option value="piapt">Proyectos de investigación aplicada y proyectos tecnológicos</option>
+              <option value="di">Dirección Individualizada</option>
+              <option value="ee">Estadía en empresas</option>
+            </select>
+        </div>
+        <div class="col">
+            <select class="form-control" name="orderBy">
+              <option value="0">Ordenar por:</option>
+              <option value="nombre">Nombre</option>
+              <option value="fecha">Fecha</option>
+              <option value="autor">Autor</option>
+            </select>
+          </div>
+      </div>
+      <hr class="my-4">
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <section class="container">
+    <h1 class="display-3">Reportes</h1>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Reporte</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Seccion</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="#">Nombre</a></th>
+          <td>Autor</td>
+          <td>Seccion</td>
+          <td>Fecha</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</body>
+</html>
