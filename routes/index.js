@@ -7,8 +7,19 @@ router.get('/', function(req, res, next) {
 });
 
 // GET descubre
-// GET Nosotros
+router.get('/descubre', function(req, res, next) {
+  res.render('descubre', { title: 'Descubre' });
+});
+
 // GET Contacto
+router.get('/contacto', function(req, res, next) {
+  res.render('contacto', { title: 'Contacto' });
+});
+
 // GET Iniciar Sesion
+router.get('/iniciar', function(req, res, next) {
+  res.render('iniciar', { title: 'Inicio' });
+});
+
 
 module.exports = router;

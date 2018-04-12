@@ -3,12 +3,12 @@ var router = express.Router();
 
 // GET Perfil
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('perfil', { title: 'Perfil' });
 });
 
 // GET Editar Perfil
-router.get('/editar', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/ajustes', function(req, res, next) {
+  res.render('ajustes', { title: 'Ajustes' });
 });
 
 // GET Gestion de Reportes
