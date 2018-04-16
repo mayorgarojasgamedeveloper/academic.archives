@@ -21,8 +21,8 @@ var usuario = {
 // Desde aqui se podran ver los logs
 // del sistema
 router.get('/logs', function(req, res, next) {
-  if (usuario && usuario.admin === true) {
-    res.render('logs', { usuario: usuario });
+  if (req.session.usuario && usuario.admin === true) {
+    res.render('logs', { usuario: req.session.usuario });
   } else {
     // En caso de que no haya una sesion
     // regresa a la pagina de inicio
@@ -33,8 +33,10 @@ router.get('/logs', function(req, res, next) {
 // Desde aqui se podran agregar usuarios
 // al sistema
 router.get('/agregar', function(req, res, next) {
-  if (usuario && usuario.admin === true) {
-    res.render('usuarios/agregar', { usuario: usuario });
+  if (req.session.usuario && usuario.admin === true) {
+    let msg = req.session.msg;
+    req.session.msg = null;
+    res.render('usuarios/agregar', { usuario: req.session.usuario, msg: msg });
   } else {
     // En caso de que no haya una sesion
     // regresa a la pagina de inicio
@@ -45,8 +47,8 @@ router.get('/agregar', function(req, res, next) {
 // Desde aqui se podran agregar usuarios
 // al sistema
 router.get('/eliminar', function(req, res, next) {
-  if (usuario && usuario.admin === true) {
-    res.render('usuarios/eliminar', { usuario: usuario });
+  if (req.session.usuario && usuario.admin === true) {
+    res.render('usuarios/eliminar', { usuario: req.session.usuario });
   } else {
     // En caso de que no haya una sesion
     // regresa a la pagina de inicio

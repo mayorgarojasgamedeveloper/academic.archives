@@ -26,7 +26,7 @@ ver/
   direccion
   estadia
 agregar/
-  linea
+  linea*
   produccion/
     art-difucion
     art-art-arbitrado
@@ -38,9 +38,9 @@ agregar/
     memorias
     productividad
     prototipo
-  proyectos
-  direccion
-  estadia
+  proyectos*
+  direccion*
+  estadia*
 modificar/ // Desde aqui se pueden borrar
   linea
   produccion/

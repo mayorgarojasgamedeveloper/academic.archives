@@ -51,7 +51,7 @@ buttonEdit.on('click', function() {
   $.each( selectItems, function( key, value ) {
     let item = $(value);
     if(item.is(':checked')) {
-      window.open('/a/modificar/linea/2');
+      window.open('/a/modificar/' + item.data('tipo') + '/' + item.data('id'));
       return;
     }
   });
@@ -60,7 +60,8 @@ buttonEdit.on('click', function() {
 buttonDelete.on('click', function() {
 
   if (confirm("Se borraran los elemenotos permanentemente!")) {
-    swal('Se eliminaron los elementos.');
+    // Hay que saber el tipo y ubtipo para eliminarlos bien
+    swal("Borrado!", "Se eliminaron los elementos correctamente.", "success");
   } else {
     swal('Acción cancelada');
   }

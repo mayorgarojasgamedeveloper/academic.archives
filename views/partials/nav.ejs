@@ -34,11 +34,12 @@
           <!-- ADMINISTRADOR -->
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Administrar Usuarios
+          Administrar
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/s/agregar">Nuevo Usuario</a>
           <a class="dropdown-item" href="/s/eliminar">Eliminar Usuario</a>
+          <a class="dropdown-item" href="/s/logs">Logs del Sistema</a>
           </div>
           </li>
           <% } %>
@@ -48,7 +49,7 @@
       <% if(!usuario) { %>
         <li class="nav-item"><a class="nav-link" href="/iniciar">Iniciar Sesión</a></li>
       <% } else { %>
-        <li class="nav-item"><a class="nav-link" href="#">Cerrar Sesión</a></li>
+        <li class="nav-item"><a class="nav-link" href="/api/salir">Cerrar Sesión</a></li>
       <% } %>
 
     </ul>

@@ -55,7 +55,7 @@
 
   <section class="container">
     <h1 class="display-3">Reportes</h1>
-    
+
     <table class="table">
       <thead>
         <tr>
@@ -66,102 +66,14 @@
         </tr>
       </thead>
       <tbody>
+        <% reportes.forEach(function(element) { %>
         <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
+          <th scope="row"><a href="/ver/<%- element.tipo %>/<%- element.id %>"><%- element.nombre %></a></th>
+          <td><%- element.autor %></td>
+          <td><%- element.tipo %></td>
+          <td><%- element.fecha %></td>
         </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="#">Nombre</a></th>
-          <td>Autor</td>
-          <td>Seccion</td>
-          <td>Fecha</td>
-        </tr>
+        <%  }); %>
       </tbody>
     </table>
   </section>

@@ -66,9 +66,39 @@ let validateTextarea = function validateTextarea(fields) {
   return status;
 }
 
+// Agregar el lsitener para el submit
+submitButtons.on('click', validateForm);
 
+$('#btn-contrasena').on('click', (e) => {
+  e.preventDefault();
 
+  let form = $('#btn-contrasena').closest('form');
+  let input = form.find('input');
+  let status = 0;
 
+  cleanError(input);
+
+  $.each(input, function() {
+    let element = $(this);
+
+    if (element.is('*[required]') && element.val() === '') {
+      generateError(element, 'Este elemento es requerido.');
+      status++;
+    } else if(element.is('*[data-type]') && !element.val().match(regex[element.data('type')])) {
+      generateError(element, 'Revise que el campo este bien escrito.' + regex[element.data('type')]);
+      status++;
+    }
+  });
+
+  var con1 = $('#contrasena');
+  var con2 = $('#contrasena-rep');
+
+  if((con1.val() === con2.val()) && status == 0) {
+    $('#form-contrasena').submit();
+  } else if(status == 0) {
+    alert('Las Contraseñas no coinciden.');
+  }
+});
 
 
 // Display settings
@@ -81,6 +111,3 @@ let generateError = function generateError(element, error) {
   element.addClass('is-invalid');
   $('<span class="invalid-feedback">'+error+'</span>').insertAfter(element);
 }
-
-// Agregar el lsitener para el submit
-submitButtons.on('click', validateForm);

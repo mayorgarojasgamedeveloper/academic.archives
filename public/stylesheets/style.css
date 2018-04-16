@@ -10,3 +10,8 @@ body {
   margin: 15px;
   border-radius: 50%;
 }
+
+.req {
+  color: red;
+  font-weight: bold;
+}

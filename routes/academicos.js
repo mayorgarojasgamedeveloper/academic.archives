@@ -1,15 +1,24 @@
 var express = require('express');
+var fs = require('fs');
 var router = express.Router();
 
-var usuario = {
-  nombre: 'Manuel Fernando',
-  apellido: 'Mayorga Rojas',
-  curriculum: 'Nulla facilisi. Integer malesuada lorem et eros vehicula, sed iaculis erat semper. Nullam tempus fermentum urna, et auctor mi rhoncus a. Suspendisse vitae lorem velit. Quisque non facilisis lacus. Aliquam eu erat quis risus volutpat pretium nec at tellus. Vestibulum luctus bibendum diam, eu dictum nibh. Donec fringilla urna leo, nec elementum ligula aliquam ac. Nullam fringilla egestas ligula ut fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed ornare finibus nisi ac maximus.',
-  foto: 'foto.jpg',
-  correo: 'fernandomayorga@academicos.com.mx',
-  usuario: 'iammayro',
-  admin: true
-}
+
+var reportes = [
+{id: '1',tipo: 'produccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',issn: '124365',nom_revista: 'Ambiental',subtipo: 'art-difucion'},
+{id: '2',tipo: 'produccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',issn: '124365',nom_revista: 'Ambiental',subtipo: 'art-arbitrado'},
+{id: '3',tipo: 'produccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',issn: '124365',nom_revista: 'Ambiental',subtipo: 'art-revista'},
+{id: '4',tipo: 'produccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',icbn: '124365',nom_revista: 'Ambiental',subtipo: 'capitulo-libro'},
+{id: '5',tipo: 'produccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',icbn: '124365',nom_revista: 'Ambiental',subtipo: 'libro'},
+{id: '6',tipo: 'produccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',icbn: '124365',nom_revista: 'Ambiental',subtipo: 'memorias'},
+{id: '7',tipo: 'produccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',issn: '124365',nom_revista: 'Ambiental',subtipo: 'informe-tecnico'},
+{id: '8',tipo: 'produccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',dependencia: '124365',subtipo: 'capitulo-libro'},
+{id: '9',tipo: 'produccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',issn: '124365',nom_revista: 'Ambiental',subtipo: 'manuales'},
+{id: '10',tipo: 'produccion',usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',issn: '124365',nom_revista: 'Ambiental',subtipo: 'productividad'},
+{id: '11',tipo: 'linea',usuario: 'iammayro',nombre: 'Final de anio'},
+{id: '12',tipo: 'proyectos',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',issn: '124365',nom_revista: 'Ambiental'},
+{id: '13',tipo: 'direccion',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',issn: '124365',nom_revista: 'Ambiental'},
+{id: '14',tipo: 'estadia',autor: 'Fernando Mayorga', usuario: 'iammayro',nombre: 'Final de anio',linea: 'Medio Ambiente',fecha: '2018/04/15',issn: '124365',nom_revista: 'Ambiental'},
+];
 
 //var usuario = null;
 
@@ -21,8 +30,8 @@ var usuario = {
 // Se puede ver el perfil de usuario desde aqui
 // Tambien se podra cerrar sesion
 router.get('/perfil', function(req, res, next) {
-  if (usuario) {
-    res.render('perfil', { usuario: usuario });
+  if (req.session.usuario) {
+    res.render('perfil', { usuario: req.session.usuario });
   } else {
     // En caso de que no haya una sesion
     // regresa a la pagina de inicio
@@ -34,8 +43,10 @@ router.get('/perfil', function(req, res, next) {
 // Tambien se puede cambiar contrasena
 // Tambien se puede borrar la cuenta
 router.get('/ajustes', function(req, res, next) {
-  if (usuario) {
-    res.render('ajustes', { usuario: usuario });
+  if (req.session.usuario) {
+    var error = req.session.error;
+    req.session.error = null;
+    res.render('ajustes', { usuario: req.session.usuario, error: error });
   } else {
     // En caso de que no haya una sesion
     // regresa a la pagina de inicio
@@ -46,8 +57,8 @@ router.get('/ajustes', function(req, res, next) {
 // Desde aqui se podran ver los reportes
 // Tambien se puede borrar reortes
 router.get('/carpeta', function(req, res, next) {
-  if (usuario) {
-    res.render('carpeta', { usuario: usuario });
+  if (req.session.usuario) {
+    res.render('carpeta', { usuario: req.session.usuario, reportes: reportes });
   } else {
     // En caso de que no haya una sesion
     // regresa a la pagina de inicio
@@ -58,28 +69,9 @@ router.get('/carpeta', function(req, res, next) {
 // Desde que se agregaran los reportes
 // El tipo de reporte es el que decide
 // Lo que se renderiza
-router.get('/agregar/:tipo/', function(req, res, next) {
-  if (usuario) {
-    switch(req.params.tipo){
-      case 'direccion':
-        res.render('reportes/agregar/direccion', { usuario: usuario });
-        break;
-      case 'estadia':
-        res.render('reportes/agregar/estadia', { usuario: usuario });
-        break;
-      case 'linea':
-        res.render('reportes/agregar/linea', { usuario: usuario });
-        break;
-      case 'produccion':
-        res.render('reportes/agregar/produccion', { usuario: usuario });
-        break;
-      case 'proyecto':
-        res.render('reportes/agregar/proyectos', { usuario: usuario });
-        break;
-      default:
-        return res.redirect('/');
-        break;
-    }
+router.get('/produccion/agregar/:tipo', function(req, res, next) {
+  if (req.session.usuario) {
+    res.render('reportes/agregar/' + req.params.tipo, { usuario: req.session.usuario });
   } else {
     // En caso de que no haya una sesion
     // regresa a la pagina de inicio
@@ -90,28 +82,9 @@ router.get('/agregar/:tipo/', function(req, res, next) {
 // Desde que se modificaran los reportes
 // El tipo de reporte es el que decide
 // Lo que se renderiza
-router.get('/modificar/:tipo/:id', function(req, res, next) {
-  if (usuario) {
-    switch(req.params.tipo){
-      case 'direccion':
-        res.render('reportes/modificar/direccion', { usuario: usuario });
-        break;
-      case 'estadia':
-        res.render('reportes/modificar/estadia', { usuario: usuario });
-        break;
-      case 'linea':
-        res.render('reportes/modificar/linea', { usuario: usuario });
-        break;
-      case 'produccion':
-        res.render('reportes/modificar/produccion', { usuario: usuario });
-        break;
-      case 'proyecto':
-        res.render('reportes/modificar/proyectos', { usuario: usuario });
-        break;
-      default:
-        return res.redirect('/');
-        break;
-    }
+router.get('/produccion/modificar/:tipo/:id', function(req, res, next) {
+  if (req.session.usuario) {
+    res.render('reportes/modificar/' + req.params.tipo, { usuario: req.session.usuario });
   } else {
     // En caso de que no haya una sesion
     // regresa a la pagina de inicio
@@ -119,36 +92,34 @@ router.get('/modificar/:tipo/:id', function(req, res, next) {
   }
 });
 
-// Desde que se veran los reportes
+
+// Desde que se agregaran los reportes
 // El tipo de reporte es el que decide
 // Lo que se renderiza
-router.get('/ver/:tipo/:id', function(req, res, next) {
-  if (usuario) {
-    switch(req.params.tipo){
-      case 'direccion':
-        res.render('reportes/ver/direccion', { usuario: usuario });
-        break;
-      case 'estadia':
-        res.render('reportes/ver/estadia', { usuario: usuario });
-        break;
-      case 'linea':
-        res.render('reportes/ver/linea', { usuario: usuario });
-        break;
-      case 'produccion':
-        res.render('reportes/ver/produccion', { usuario: usuario });
-        break;
-      case 'proyecto':
-        res.render('reportes/ver/proyectos', { usuario: usuario });
-        break;
-      default:
-        return res.redirect('/');
-        break;
-    }
+router.get('/agregar/:tipo', function(req, res, next) {
+  if (req.session.usuario) {
+    res.render('reportes/agregar/' + req.params.tipo, { usuario: req.session.usuario });
   } else {
     // En caso de que no haya una sesion
     // regresa a la pagina de inicio
     return res.redirect('/');
   }
 });
+
+
+// Desde que se modificaran los reportes
+// El tipo de reporte es el que decide
+// Lo que se renderiza
+router.get('/modificar/:tipo/:id', function(req, res, next) {
+  if (req.session.usuario) {
+    res.render('reportes/modificar/' + req.params.tipo, { usuario: req.session.usuario });
+  } else {
+    // En caso de que no haya una sesion
+    // regresa a la pagina de inicio
+    return res.redirect('/');
+  }
+});
+
+
 
 module.exports = router;
